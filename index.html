@@ -102,6 +102,33 @@
             margin-left: 5px;
         }
 
+        /* 探究與實作專用樣式 */
+        .project-link {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-more {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-more:hover {
+            background-color: #2980b9;
+        }
+
         /* 企業參訪區塊專用樣式 */
         .visit-content {
             display: flex;
@@ -130,17 +157,14 @@
             border: 1px solid #ddd;
         }
 
-        /* 當螢幕寬度大於 600px 時，圖文並排 */
         @media (min-width: 600px) {
             .visit-content {
                 flex-direction: row;
                 align-items: flex-start;
             }
-
             .visit-text {
                 flex: 2;
             }
-
             .visit-image-container {
                 flex: 1;
                 text-align: right;
@@ -189,11 +213,18 @@
         </section>
 
         <section id="projects">
-            <h2>探究與實作 <small>Inquiry & Practice</small></h2>
+            <h2>
+                <a href="https://claire2007102410719.github.io/experiment.html" target="_blank" class="project-link">
+                    探究與實作 <small>Inquiry & Practice</small>
+                </a>
+            </h2>
             <ul>
                 <li><strong>自製望遠鏡</strong>：從光學原理出發，親手實踐鏡片打磨與焦距調整，探索觀測科學。</li>
                 <li><strong>酵母菌實驗</strong>：透過變因控制觀察酵母菌發酵現象，深入理解生物化學反應過程。</li>
             </ul>
+            <a href="https://claire2007102410719.github.io/experiment.html" target="_blank" class="btn-more">
+                查看詳細實驗成果 &raquo;
+            </a>
         </section>
 
         <section id="visit">
