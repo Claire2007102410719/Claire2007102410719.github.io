@@ -10,6 +10,7 @@
             --accent-color: #3498db;
             --bg-color: #f4f7f6;
             --text-color: #333;
+            --card-bg: #ffffff;
         }
 
         body {
@@ -48,7 +49,7 @@
         }
 
         section {
-            background: white;
+            background: var(--card-bg);
             border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
@@ -65,6 +66,15 @@
             border-left: 5px solid var(--accent-color);
             padding-left: 15px;
             margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 small {
+            font-size: 0.6em;
+            color: #7f8c8d;
+            font-weight: normal;
         }
 
         .grid {
@@ -75,6 +85,7 @@
 
         ul {
             padding-left: 20px;
+            margin: 0;
         }
 
         li {
@@ -91,11 +102,58 @@
             margin-left: 5px;
         }
 
+        /* 企業參訪區塊專用樣式 */
+        .visit-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .visit-text strong {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .visit-image-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        .visit-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+
+        /* 當螢幕寬度大於 600px 時，圖文並排 */
+        @media (min-width: 600px) {
+            .visit-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .visit-text {
+                flex: 2;
+            }
+
+            .visit-image-container {
+                flex: 1;
+                text-align: right;
+            }
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
             color: #777;
             font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+            margin-top: 3rem;
         }
     </style>
 </head>
@@ -109,7 +167,7 @@
     <div class="container">
         
         <section id="interests">
-            <h2>個人興趣 <small style="font-size: 0.5em; vertical-align: middle;">Interests</small></h2>
+            <h2>個人興趣 <small>Interests</small></h2>
             <ul>
                 <li><strong>彈鋼琴</strong> <span class="tag">英國皇家鋼琴 3 級認證</span></li>
                 <li><strong>烏克麗麗</strong>：享受弦樂彈奏的樂趣與旋律感。</li>
@@ -117,7 +175,7 @@
         </section>
 
         <section id="clubs">
-            <h2>社團經歷 <small style="font-size: 0.5em; vertical-align: middle;">Clubs</small></h2>
+            <h2>社團經歷 <small>Clubs</small></h2>
             <div class="grid">
                 <div>
                     <strong>國際交流社</strong>
@@ -131,7 +189,7 @@
         </section>
 
         <section id="projects">
-            <h2>探究與實作 <small style="font-size: 0.5em; vertical-align: middle;">Inquiry & Practice</small></h2>
+            <h2>探究與實作 <small>Inquiry & Practice</small></h2>
             <ul>
                 <li><strong>自製望遠鏡</strong>：從光學原理出發，親手實踐鏡片打磨與焦距調整，探索觀測科學。</li>
                 <li><strong>酵母菌實驗</strong>：透過變因控制觀察酵母菌發酵現象，深入理解生物化學反應過程。</li>
@@ -139,9 +197,16 @@
         </section>
 
         <section id="visit">
-            <h2>企業參訪 <small style="font-size: 0.5em; vertical-align: middle;">Industrial Visit</small></h2>
-            <p><strong>碩天科技 (CyberPower)</strong></p>
-            <p>參訪全球領先的電力管理解決方案供應商，了解不斷電系統 (UPS) 的研發流程與現代化企業的管理模式。</p>
+            <h2>企業參訪 <small>Industrial Visit</small></h2>
+            <div class="visit-content">
+                <div class="visit-text">
+                    <p><strong>碩天科技 (CyberPower)</strong></p>
+                    <p>參訪全球領先的電力管理解決方案供應商，了解不斷電系統 (UPS) 的研發流程與現代化企業的管理模式。</p>
+                </div>
+                <div class="visit-image-container">
+                    <img src="test.jpg" alt="參訪碩天科技照片" class="visit-image">
+                </div>
+            </div>
         </section>
 
     </div>
