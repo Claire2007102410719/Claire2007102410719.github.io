@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>許汝樂的科學實驗室 - 探究與實作成果</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --nav-bg: #fff;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* 導覽列樣式 */
+        nav {
+            background-color: var(--nav-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        /* 頁首樣式 */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* 主體內容樣式 */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .experiment-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experiment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 確保整張實驗報告圖片都可見 */
+            transition: transform 0.5s ease;
+            padding: 10px; /* 給圖片一點呼吸空間 */
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .experiment-card:hover .card-image {
+            transform: scale(1.03); /* 微幅放大，不影響認讀 */
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #01579b;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-content h2 {
+            margin: 0 0 1rem 0;
+            color: var(--primary-color);
+            font-size: 1.6rem;
+        }
+
+        .card-content p {
+            margin: 0 0 1.5rem 0;
+            color: #666;
+            font-size: 1rem;
+            height: 4.8em; /* 限制顯示三行高度 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .btn-detail {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-detail:hover {
+            background-color: #2980b9;
+        }
+
+        /* 頁尾樣式 */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+            margin-top: 4rem;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .nav-container { padding: 0 1rem; }
+            .nav-links { gap: 1rem; }
+            .experiment-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">許汝樂 LOK</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="#" class="active">實驗成果</a></li>
+                </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1>探究與實作成果</h1>
+        <p>記錄科學探索的腳步與心得</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="experiment-grid">
+
+            <div class="experiment-card">
+                <div class="card-image-container">
+                    <img src="test.jpg" alt="游標尺測量實驗報告" class="card-image">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">物理測量</span>
+                    <h2>游標尺的使用與不確定度分析</h2>
+                    <p>學習如何正確操作游標尺，測量不同物體（如硬幣、光碟）的厚度與直徑，並計算平均值、A類與B類不確定度，從而得出完整的測量結果與誤差分析。</p>
+                    <a href="#link_to_detail_1" class="btn-detail">查看完整報告</a>
+                </div>
+            </div>
+
+            <div class="experiment-card">
+                <div class="card-image-container">
+                    <img src="test.jpg" alt="水的折射率實驗報告" class="card-image">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">光學</span>
+                    <h2>觀察與計算水的折射率</h2>
+                    <p>利用半圓形透明塑膠盒、水與插針法，觀察光線由空氣進入水中的偏折情形。透過角度測量，實踐折射定律（Snell's Law）並計算出水的折射率實驗值。</p>
+                    <a href="#link_to_detail_2" class="btn-detail">查看完整報告</a>
+                </div>
+            </div>
+
+            <div class="experiment-card">
+                <div class="card-image-container">
+                    <img src="test.jpg" alt="凸透鏡成像原理實驗報告" class="card-image">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">光學平台實驗</span>
+                    <h2>凸透鏡成像原理探究</h2>
+                    <p>在光學平台上，調整光源、凸透鏡與光屏的位置，觀察不同物距（如物體在焦點外、焦點上、焦點內）所形成的實像與虛像，驗證透鏡成像公式。</p>
+                    <a href="#link_to_detail_3" class="btn-detail">查看完整報告</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 許汝樂 - 個人學習歷程網頁</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem;">新化高中</p>
+    </footer>
+
+</body>
+</html>
